@@ -30,5 +30,5 @@ const employeeData = [
     },
 ];
 
-ReactDOM.render(<SearchApp data={ employeeData } />, document.getElementById('root'));
+ReactDOM.render(<SearchApp data={employeeData} />, document.getElementById('root'));
 registerServiceWorker();

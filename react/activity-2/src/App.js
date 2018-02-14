@@ -1,21 +1,26 @@
 // Import Component
 import React, { Component } from 'react';
 
+
 // Create a SearchApp Component
 class SearchApp extends Component {
     // In the constructor, set the initial state of search to empty string
     // Also *bind `this`* to the handleChange function
     constructor(props) {
         super(props);
-
+        this.state = { search: '' };
+        this.handleChange = this.handleChange.bind(this);
     }
 
     // In this event, get the target value, and reset the state of `search`
     handleChange(event) {
         // Get event value
+        let value = event.target.value;
 
         // Set the state to trigger a re-rendering
-
+        this.setState({
+            search: value
+        });
     }
 
     // Function to render data
@@ -33,6 +38,8 @@ class SearchApp extends Component {
         // Return a `div` containing a  `UserInput` component and a `Table` component
         return (
             <div>
+                <UserInput />
+                <Table />
             </div>
         )
     }
@@ -48,6 +55,7 @@ class UserInput extends Component {
     render() {
         return (
             <div>
+                <input onChange={this.props.update}></input>
             </div>)
     }
 }
@@ -57,15 +65,15 @@ class TableRow extends Component {
     render() {
         return (
             <tr>
-              <td>
-                { this.props.name }
-              </td>
-              <td>
-                { this.props.title }
-              </td>
-              <td>
-                { this.props.salary }
-              </td>
+                <td>
+                    {this.props.name}
+                </td>
+                <td>
+                    {this.props.title}
+                </td>
+                <td>
+                    {this.props.salary}
+                </td>
             </tr>)
     }
 }
@@ -80,17 +88,18 @@ class Table extends Component {
     render() {
         return (
             <div>
-              <table className="table">
-                <tbody>
-                  <tr>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>Salary</th>
-                  </tr>
-                  {// write your code here!
-                  }
-                </tbody>
-              </table>
+                <table className="table">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Salary</th>
+                        </tr>
+                        {// write your code here!
+                            console.log(this.props.data)
+                        }
+                    </tbody>
+                </table>
             </div>
         )
     }
